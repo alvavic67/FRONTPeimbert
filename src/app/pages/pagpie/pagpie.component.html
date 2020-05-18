@@ -1,0 +1,73 @@
+<h1 style="text-align: center; margin: 20px;">Grafica pie de {{selectedDimension.label}}</h1>
+<div class="row">
+    <div class="col-3">
+        <ng-select  
+           [items]="defaultBindingsList"
+           [(ngModel)]="selectedDimension"
+           (change)="onChangeDimension($event)"
+           [clearable]="false">
+        </ng-select>
+    </div>
+    <div class=" col-3">
+        <ng-select
+            [items]="customer$ | async"
+            [multiple]="true"
+            [closeOnSelect]="true"
+            [searchable]="true"
+            placeholder="Selección de {{selectedDimension.label}}"
+            (change)="onChangeValues()"
+            [(ngModel)]="selectedCustomer">
+        </ng-select>
+        <div>
+            Selected value: <br/>
+            <ul>
+                <li *ngFor="let item of selectedCustomer">{{item}}</li>
+            </ul>
+            <button (click)="clearModel()" class="btn btn-secondary btn-sm">Clear model</button>
+        </div>
+    </div>
+    <div class="col-3">
+        <ng-select
+            [items]="year$ | async"
+            [multiple]="true"
+            [closeOnSelect]="true"
+            [searchable]="false"
+            placeholder="Seleccione un año de la lista"
+            (change)="onChangeValues()"
+            [(ngModel)]="selectedYear"
+            bindLabel="name">
+        </ng-select>
+        <div>
+            Selected value: <br/>
+            <ul>
+                <li *ngFor="let item of selectedYear">{{item}}</li>
+            </ul>
+            <button (click)="clearModelY()" class="btn btn-secondary btn-sm">Limpiar años</button>
+        </div>
+    </div>
+    <div class="col-3">
+        <ng-select
+            [items]="month$ | async"
+            [multiple]="true"
+            [closeOnSelect]="true"
+            [searchable]="false"
+            placeholder="Seleccione un mes de la lista"
+            (change)="onChangeValues()"
+            [(ngModel)]="selectedMonth"
+            bindLabel="mes">
+        </ng-select>
+        <div>
+            Selected value: <br/>
+            <ul>
+                <li *ngFor="let item of selectedMonth">{{item}}</li>
+            </ul>
+            <button (click)="clearModelM()" class="btn btn-secondary btn-sm">Limpiar meses</button>
+        </div>
+    </div>
+</div>
+
+<app-pie-chart
+    [pieChartLabels]="dataDimension"
+    [pieChartData]="dataValues">
+</app-pie-chart>
+
