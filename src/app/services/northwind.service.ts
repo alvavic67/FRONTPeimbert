@@ -30,8 +30,8 @@ export class NorthwindService {
     );
   }
 
-  getDataPieDimension(dimension: string, values: string[]) {
-    return this.http.post(`${urlAPI}GetDataPieDimension/${dimension}/DESC`, values).pipe(
+  getDataPieDimension(dimension: string, values: any) {
+    return this.http.post(`${urlAPI}GetDataPieDimension/${dimension}`, values).pipe(
       map((result: any) => result)
     );
   }

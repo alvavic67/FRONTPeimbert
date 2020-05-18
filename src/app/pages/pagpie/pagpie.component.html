@@ -15,7 +15,7 @@
             [closeOnSelect]="true"
             [searchable]="true"
             placeholder="Selección de {{selectedDimension.label}}"
-            (change)="onChangeValues()"
+            (change)="onChangeCustomer($event)"
             [(ngModel)]="selectedCustomer">
         </ng-select>
         <div>
@@ -23,7 +23,7 @@
             <ul>
                 <li *ngFor="let item of selectedCustomer">{{item}}</li>
             </ul>
-            <button (click)="clearModel()" class="btn btn-secondary btn-sm">Clear model</button>
+            <button (click)="clearModelCustomer()" class="btn btn-secondary btn-sm">Clear model</button>
         </div>
     </div>
     <div class="col-3">
@@ -33,7 +33,7 @@
             [closeOnSelect]="true"
             [searchable]="false"
             placeholder="Seleccione un año de la lista"
-            (change)="onChangeValues()"
+            (change)="onChangeYear($event)"
             [(ngModel)]="selectedYear"
             bindLabel="name">
         </ng-select>
@@ -42,7 +42,7 @@
             <ul>
                 <li *ngFor="let item of selectedYear">{{item}}</li>
             </ul>
-            <button (click)="clearModelY()" class="btn btn-secondary btn-sm">Limpiar años</button>
+            <button (click)="clearModelYear()" class="btn btn-secondary btn-sm">Limpiar años</button>
         </div>
     </div>
     <div class="col-3">
@@ -52,7 +52,7 @@
             [closeOnSelect]="true"
             [searchable]="false"
             placeholder="Seleccione un mes de la lista"
-            (change)="onChangeValues()"
+            (change)="onChangeMonth($event)"
             [(ngModel)]="selectedMonth"
             bindLabel="mes">
         </ng-select>
@@ -61,7 +61,7 @@
             <ul>
                 <li *ngFor="let item of selectedMonth">{{item}}</li>
             </ul>
-            <button (click)="clearModelM()" class="btn btn-secondary btn-sm">Limpiar meses</button>
+            <button (click)="clearModelMonth()" class="btn btn-secondary btn-sm">Limpiar meses</button>
         </div>
     </div>
 </div>
